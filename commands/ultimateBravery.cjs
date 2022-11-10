@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
+const { channelMention, roleMention, userMention, User } = require('discord.js');
 const runeData = require('../runesReforged.json')
 const {Boots, LegendaryItems, MythicItems, Champions, Abilities} = require('../ultimateBraveryData.cjs');
 
@@ -10,7 +11,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
         .setName("ub")
         .setDescription("Gör league lite svårare"),
-	execute: async ({ client, interaction }) => {
+	execute: async ({ client, interaction, userMention }) => {
 
 
         function getRandomRune(max){
@@ -36,7 +37,10 @@ module.exports = {
         
         const RandomChamp = Champions[getRandomRune(162)];
         const RandomAbility = Abilities[getRandomRune(3)];
+
+        const requestedUser = interaction.user;
 		await interaction.reply(
+            "Requested by: " + `${requestedUser}` + ('\n') +
             "**Champion: **"
             + ('\n') +
             RandomChamp 
