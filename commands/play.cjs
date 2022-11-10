@@ -16,10 +16,10 @@ module.exports = {
 				)
 		),
 	execute: async ({ client, interaction }) => {
-        // Make sure the user is inside a voice channel
-		if (!interaction.member.voice.channel) return interaction.reply("Du måste vara i en vc för att spela musik din sliriga jävel");
+        // Check if user is in vc
+		if (!interaction.member.voice.channel) return interaction.reply("Du måste vara i en vc för att spela musik din schliriga jävel");
 
-        // Create a play queue for the server
+        // Create queue for the bot
 		const queue = await client.player.createQueue(interaction.guild);
         // Wait until you are connected to the channel
 		if (!queue.connection) await queue.connect(interaction.member.voice.channel)
@@ -28,7 +28,7 @@ module.exports = {
         
         if (interaction.options.getSubcommand() === "song") {
 
-            // Search for the song using the discord-player
+            // Search for song
             let url = interaction.options.getString("searchterms")
             const result = await client.player.search(url, {
                 requestedBy: interaction.user,
