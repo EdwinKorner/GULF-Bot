@@ -290,7 +290,7 @@ const MythicItems = [
     const FourthRune = PrimaryRune.slots[2].runes[getRandomRune(3)];
     const FifthRune = PrimaryRune.slots[3].runes[getRandomRune(3)];
 
-    const FullRunePage =  SecondaryRune.name + " | " + ThirdRune.name + " | " + FourthRune.name + " | " + FifthRune.name;
+    const FullRunePage = PrimaryRune.name + " | " + SecondaryRune.name + " | " + ThirdRune.name + " | " + FourthRune.name + " | " + FifthRune.name;
 
     const RandomMythicItem = MythicItems[getRandomRune(26)];
     const RandomBoots = Boots[getRandomRune(7)];
