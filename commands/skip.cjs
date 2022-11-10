@@ -4,7 +4,7 @@ const { MessageEmbed } = require("discord.js")
 module.exports = {
 	data: new SlashCommandBuilder()
         .setName("skip")
-        .setDescription("Skips the current song"),
+        .setDescription("Skippa låten som spelas"),
 
 	execute: async ({ client, interaction }) => {
 

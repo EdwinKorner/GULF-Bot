@@ -3,7 +3,7 @@ const { SlashCommandBuilder } = require("@discordjs/builders")
 module.exports = {
 	data: new SlashCommandBuilder()
         .setName("resume")
-        .setDescription("Resumes the current song"),
+        .setDescription("Börjar spela igen"),
 	execute: async ({ client, interaction }) => {
         // Get the queue for the server
 		const queue = client.player.getQueue(interaction.guildId)

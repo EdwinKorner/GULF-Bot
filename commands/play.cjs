@@ -1,30 +1,19 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { MessageEmbed } = require("discord.js")
-const { QueryType } = require("discord-player")
+const { QueryType, Player } = require("discord-player");
+const { AudioPlayer } = require("@discordjs/voice");
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName("play")
-		.setDescription("play a song from YouTube.")
-		.addSubcommand(subcommand =>
-			subcommand
-				.setName("search")
-				.setDescription("Searches for a song and plays it")
-				.addStringOption(option =>
-					option.setName("searchterms").setDescription("search keywords").setRequired(true)
-				)
-		)
-        .addSubcommand(subcommand =>
-			subcommand
-				.setName("playlist")
-				.setDescription("Plays a playlist from YT")
-				.addStringOption(option => option.setName("url").setDescription("the playlist's url").setRequired(true))
-		)
+		.setDescription("Spelar en låt från YouTube/Soundcloud.")
 		.addSubcommand(subcommand =>
 			subcommand
 				.setName("song")
-				.setDescription("Plays a single song from YT")
-				.addStringOption(option => option.setName("url").setDescription("the song's url").setRequired(true))
+				.setDescription("Söker efter en låt och spelar den")
+				.addStringOption(option =>
+					option.setName("searchterms").setDescription("search keywords").setRequired(true)
+				)
 		),
 	execute: async ({ client, interaction }) => {
         // Make sure the user is inside a voice channel
@@ -32,55 +21,12 @@ module.exports = {
 
         // Create a play queue for the server
 		const queue = await client.player.createQueue(interaction.guild);
-
         // Wait until you are connected to the channel
 		if (!queue.connection) await queue.connect(interaction.member.voice.channel)
 
 		let embed = new MessageEmbed()
-
-		if (interaction.options.getSubcommand() === "song") {
-            let url = interaction.options.getString("url")
-            
-            // Search for the song using the discord-player
-            const result = await client.player.search(url, {
-                requestedBy: interaction.user,
-                searchEngine: QueryType.YOUTUBE_VIDEO
-            })
-
-            // finish if no tracks were found
-            if (result.tracks.length === 0)
-                return interaction.reply("No results")
-
-            // Add the track to the queue
-            const song = result.tracks[0]
-            await queue.addTrack(song)
-            embed
-                .setDescription(`**[${song.title}](${song.url})** ligger i kön`)
-                .setThumbnail(song.thumbnail)
-                .setFooter({ text: `Duration: ${song.duration}`})
-
-		}
-        else if (interaction.options.getSubcommand() === "playlist") {
-
-            // Search for the playlist using the discord-player
-            let url = interaction.options.getString("url")
-            const result = await client.player.search(url, {
-                requestedBy: interaction.user,
-                searchEngine: QueryType.YOUTUBE_PLAYLIST
-            })
-
-            if (result.tracks.length === 0)
-                return interaction.reply(`Detta är ingen spellista ${url}`)
-            
-            // Add the tracks to the queue
-            const playlist = result.playlist
-            await queue.addTracks(result.tracks)
-            embed
-                .setDescription(`**${result.tracks.length} låtar från [${playlist.title}](${playlist.url})** ligger nu i kön`)
-                .setThumbnail(playlist.thumbnail)
-
-		} 
-        else if (interaction.options.getSubcommand() === "search") {
+        
+        if (interaction.options.getSubcommand() === "song") {
 
             // Search for the song using the discord-player
             let url = interaction.options.getString("searchterms")

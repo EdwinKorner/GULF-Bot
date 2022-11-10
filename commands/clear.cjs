@@ -2,8 +2,8 @@ const { SlashCommandBuilder } = require("@discordjs/builders")
 
 module.exports = {
 	data: new SlashCommandBuilder()
-        .setName("exit")
-        .setDescription("Kicka botten från vc"),
+        .setName("clear")
+        .setDescription("Tömmer kön"),
 	execute: async ({ client, interaction }) => {
 
 		const queue = client.player.getQueue(interaction.guildId)
@@ -14,8 +14,8 @@ module.exports = {
 			return;
 		}
 
-		queue.destroy();
+		queue.clear();
 
-        await interaction.reply("Lägger almagd snabbt. Brb")
+        await interaction.reply("Nu är kön tom :)")
 	},
 }

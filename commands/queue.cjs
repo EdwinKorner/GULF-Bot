@@ -4,7 +4,7 @@ const { MessageEmbed } = require("discord.js")
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("queue")
-        .setDescription("shows first 10 songs in the queue"),
+        .setDescription("Visar de första 10 låtarna i kön"),
 
     execute: async ({ client, interaction }) => {
         const queue = client.player.getQueue(interaction.guildId)
