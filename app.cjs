@@ -4,17 +4,20 @@ require('dotenv').config();
 
 const {REST} = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
-const { Client, Intents, Collection } = require('discord.js');
+const { Client, Intents, Collection, Collector } = require('discord.js');
 const { Player } = require("discord-player")
+const {RandomWordsArray} = require('./MAO.cjs');
 
 
 const fs = require('fs');
 const path = require('path');
 const { channel } = require('diagnostics_channel');
+const { spoiler } = require('@discordjs/builders');
 
 
 const client = new Client({
-    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES]
+    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS],
+    partials: ['MESSAGE', 'CHANNEL', 'REACTION']
 });
 
 // List of all commands
@@ -76,21 +79,15 @@ client.login(process.env.DISCORD_BOT_TOKEN);
 
 //Timer
 
-let minutes = 2
-let seconds = 0
-let minutesToSeconds = minutes*60;
 
-let time = minutesToSeconds + seconds;
 
-let duration = time;
-
-let getTime = "Timer: " + duration
-
-let PREFIX = 'g!'
+let PREFIX = '/'
 
 client.on('message', message => {
-    if(message.content.startsWith(PREFIX) && message.content.endsWith(" timer")){
+    if(message.content.startsWith(PREFIX) && message.content.endsWith("MAO")){
         
+        let duration = 10;
+        let getTime = "Timer: " + duration
         let botMessage = message.channel;
         botMessage.send(getTime);
         let interval = setInterval(() => {
@@ -98,20 +95,57 @@ client.on('message', message => {
             botMessage.lastMessage.edit("Timer: " + duration)
             if(duration <= 0) {
                 clearInterval(interval);
-                botMessage.lastMessage.edit("Timer is done")
+                botMessage.lastMessage.edit("Timern är klar")
             }
         }, 1000)
+
+        function getRandomWord(max){
+            return Math.floor(Math.random()* max)
+        }
+        
+        // let forLength = 12;
+        // let Words = ""
+        
+        // for(let i = 0; i < forLength; i++) {
+        //     Words += RandomWordsArray[getRandomWord(12)] + '\n'
+        // }
+        const Word1 = RandomWordsArray[getRandomWord(12)]
+        const Word2 = RandomWordsArray[getRandomWord(12)]
+        const Word3 = RandomWordsArray[getRandomWord(12)]
+        const Word4 = RandomWordsArray[getRandomWord(12)]
+        const Word5 = RandomWordsArray[getRandomWord(12)]
+        const Word6 = RandomWordsArray[getRandomWord(12)]
+
+        let DM = message.author;
+        DM.send(`
+        **Ord: **
+        **Ord1:**
+        ||${Word1}||
+        **Ord2: **
+        ||${Word2}||
+        **Ord3: **
+        ||${Word3}||
+        **Ord4: **
+        ||${Word4}||
+        **Ord5: **
+        ||${Word5}||
+        **Ord6: **
+        ||${Word6}||
+        `);
+       
     }
 })
 
 //restart bot
 client.on('message', message => {
-    if(message.content.startsWith(PREFIX) && message.content.endsWith(" restart")) {
+    if(message.content.startsWith(PREFIX) && message.content.endsWith("restart")) {
         if(message.author.id !== '236574009641140226') return false;
         resetBot();
         message.channel.send("Omstartad")
     }
 })
+
+
 
 function resetBot(){
     client.destroy();
