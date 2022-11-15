@@ -149,6 +149,27 @@ client.on('message', message => {
     }
 })
 
+client.on('message', message =>{
+    const answers = [
+        "100%",
+        "Absolut",
+        "Ja",
+        "Nej",
+        "Absolut inte",
+        "Aldrig"
+    ]
+    if(message.content.startsWith("/8ball")){
+        function getRandomAnswer(max){
+            return Math.floor(Math.random()* max)
+        }
+    
+        let randomAnswer = answers[getRandomAnswer(6)]
+        
+        message.channel.lastMessage.reply(randomAnswer)  
+
+    }
+})
+
 function resetBot(){
     client.destroy();
     client.login(process.env.DISCORD_BOT_TOKEN);
