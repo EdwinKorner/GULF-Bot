@@ -103,12 +103,17 @@ client.on('message', message => {
             return Math.floor(Math.random()* max)
         }
         
-        // let forLength = 12;
+        // let forLength = 5;
         // let Words = ""
+        let DM = message.author;
         
         // for(let i = 0; i < forLength; i++) {
         //     Words += RandomWordsArray[getRandomWord(12)] + '\n'
         // }
+        // DM.send(`||${Words}||`)
+
+        
+
         const Word1 = RandomWordsArray[getRandomWord(12)]
         const Word2 = RandomWordsArray[getRandomWord(12)]
         const Word3 = RandomWordsArray[getRandomWord(12)]
@@ -116,7 +121,6 @@ client.on('message', message => {
         const Word5 = RandomWordsArray[getRandomWord(12)]
         const Word6 = RandomWordsArray[getRandomWord(12)]
 
-        let DM = message.author;
         DM.send(`
         **Ord: **
         **Ord1:**
@@ -144,8 +148,6 @@ client.on('message', message => {
         message.channel.send("Omstartad")
     }
 })
-
-
 
 function resetBot(){
     client.destroy();

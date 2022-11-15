@@ -23,23 +23,23 @@ module.exports = {
         
         let duration = time;
         
-        
-        let getTime = "Timer: " + duration
-        
-        let interval = setInterval((timerMessage) => {
-            duration--;
-            if(duration == 0) {
-                clearInterval(interval);
-                getTime ="Timer is done"
-            }
-            console.log(duration)
-        }, 1000)
-        
-        
-        client.data.channel.send("blah blah").then((msg)=>{
-            client.message.edit("Timer: " + duration)
-            //your code here! msg.edit will work here.
-        })
+                // Respond with the embed containing information about the player
+                await interaction.reply(`
+                Timer: **${duration}**
+                `)      
+    
+                let interval = setInterval(() => {
+                    duration--;
+                    interaction.editReply(`
+                    Timer: **${duration}**
+                    `)
+                    if(duration <= 0) {
+                        clearInterval(interval);
+                        interaction.editReply(`
+                        Timern är klar
+                        `)
+                    }
+                }, 1000)
         
 	},
 }
