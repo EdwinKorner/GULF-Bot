@@ -18,7 +18,7 @@ module.exports = {
             return Math.floor(Math.random()* max)
         }
 
-        let randomObject = musikData[getRandomSong(3)];
+        let randomObject = musikData[getRandomSong(32)];
         let url = randomObject.url
         const result = await client.player.search(url, {
             requestedBy: interaction.user,
