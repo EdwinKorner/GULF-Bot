@@ -15,39 +15,34 @@ const musikData = [
         url: "https://www.youtube.com/watch?v=FvOpPeKSf_4"
     },
     {
-        artist: "Kids",
-        song: "MGMT",
+        artist: "MGMT",
+        song: "Kids",
         url: "https://www.youtube.com/watch?v=95enODgGQ4s"
     },
     {
-        artist: "Little Dark Age",
-        song: "MGMT",
+        artist: "MGMT",
+        song: "Little Dark Age",
         url: "https://www.youtube.com/watch?v=ETEg-SB01QY"
     },
     {
-        artist: "Midnight City",
-        song: "M83",
+        artist: "M83",
+        song: "Midnight City",
         url: "https://www.youtube.com/watch?v=PuzvORd7wiM"
     },
     {
-        artist: "Feel Good Inc",
-        song: "Gorillaz",
+        artist: "Gorillaz",
+        song: "Feel Good Inc",
         url: "https://www.youtube.com/watch?v=ZxVw7bvMd3s"
     },
     {
-        artist: "Jerk it out",
-        song: "The caesars",
+        artist: "The caesars",
+        song: "Jerk it out",
         url: "https://www.youtube.com/watch?v=KBobN-r4tag"
     },
     {
         artist: "Joddla Med Siv",
         song: "Tjuge Pågar I Bastun",
         url: "https://www.youtube.com/watch?v=4Eqdrdu8Q4o"
-    },
-    {
-        artist: "Joddla Med Siv",
-        song: "Tony Tuggar Tuggummi",
-        url: "https://www.youtube.com/watch?v=mt-GD1hFg40"
     },
     {
         artist: "Joddla Med Siv",
