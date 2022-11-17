@@ -84,9 +84,9 @@ client.login(process.env.DISCORD_BOT_TOKEN);
 let PREFIX = '/'
 
 client.on('message', message => {
-    if(message.content.startsWith(PREFIX) && message.content.endsWith("MAO")){
+    if(message.content.startsWith(PREFIX) && message.content.endsWith("mao")){
         
-        let duration = 10;
+        let duration = 45;
         let getTime = "Timer: " + duration
         let botMessage = message.channel;
         botMessage.send(getTime);
@@ -114,15 +114,29 @@ client.on('message', message => {
 
         
 
-        const Word1 = RandomWordsArray[getRandomWord(12)]
-        const Word2 = RandomWordsArray[getRandomWord(12)]
-        const Word3 = RandomWordsArray[getRandomWord(12)]
-        const Word4 = RandomWordsArray[getRandomWord(12)]
-        const Word5 = RandomWordsArray[getRandomWord(12)]
-        const Word6 = RandomWordsArray[getRandomWord(12)]
+        const Word1 = RandomWordsArray[getRandomWord(331)]
+        const Word2 = RandomWordsArray[getRandomWord(331)]
+        const Word3 = RandomWordsArray[getRandomWord(331)]
+        const Word4 = RandomWordsArray[getRandomWord(331)]
+        const Word5 = RandomWordsArray[getRandomWord(331)]
+        const Word6 = RandomWordsArray[getRandomWord(331)]
+        const Word7 = RandomWordsArray[getRandomWord(331)]
+        const Word8 = RandomWordsArray[getRandomWord(331)]
+        const Word9 = RandomWordsArray[getRandomWord(331)]
+        const Word10 = RandomWordsArray[getRandomWord(331)]
+        const Word11 = RandomWordsArray[getRandomWord(331)]
+        const Word12 = RandomWordsArray[getRandomWord(331)]
+        const Word13 = RandomWordsArray[getRandomWord(331)]
+        const Word14 = RandomWordsArray[getRandomWord(331)]
+        const Word15 = RandomWordsArray[getRandomWord(331)]
+        const Word16 = RandomWordsArray[getRandomWord(331)]
+        const Word17 = RandomWordsArray[getRandomWord(331)]
+        const Word18 = RandomWordsArray[getRandomWord(331)]
+        const Word19 = RandomWordsArray[getRandomWord(331)]
+        const Word20 = RandomWordsArray[getRandomWord(331)]
 
         DM.send(`
-        **Ord: **
+            \n
         **Ord1:**
         ||${Word1}||
         **Ord2: **
@@ -135,6 +149,34 @@ client.on('message', message => {
         ||${Word5}||
         **Ord6: **
         ||${Word6}||
+        **Ord7: **
+        ||${Word7}||
+        **Ord8: **
+        ||${Word8}||
+        **Ord9: **
+        ||${Word9}||
+        **Ord10: **
+        ||${Word10}||
+        **Ord11: **
+        ||${Word11}||
+        **Ord12: **
+        ||${Word12}||
+        **Ord13: **
+        ||${Word13}||
+        **Ord14: **
+        ||${Word14}||
+        **Ord15: **
+        ||${Word15}||
+        **Ord16: **
+        ||${Word16}||
+        **Ord17: **
+        ||${Word17}||
+        **Ord18: **
+        ||${Word18}||
+        **Ord19: **
+        ||${Word19}||
+        **Ord20: **
+        ||${Word20}||
         `);
        
     }
