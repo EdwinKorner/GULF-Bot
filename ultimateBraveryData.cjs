@@ -13,23 +13,22 @@ const MythicItems = [
     itemData.data[6630].name, 
     itemData.data[3152].name, 
     itemData.data[6673].name, 
-    itemData.data[4005].name, 
     itemData.data[6672].name, 
     itemData.data[6653].name, 
-    itemData.data[3190].name, 
-    itemData.data[3190].name, 
     itemData.data[6655].name, 
-    itemData.data[6617].name, 
     itemData.data[4636].name, 
     itemData.data[6693].name, 
     itemData.data[4633].name, 
-    itemData.data[7020].name, 
     itemData.data[6631].name, 
-    itemData.data[3068].name, 
     itemData.data[3078].name, 
+    itemData.data[6665].name, 
+    itemData.data[3084].name, 
+    itemData.data[6667].name, 
+    itemData.data[6657].name, 
     itemData.data[6664].name,];
 
     const LegendaryItems = [
+        itemData.data[3068].name, 
         itemData.data[8020].name, 
         itemData.data[8001].name, 
         itemData.data[3003].name, 
@@ -285,6 +284,16 @@ const MythicItems = [
         "E"
     ]
     
+    const SummonerSpells = [
+        "Heal",
+        "Ghost",
+        "Barrier",
+        "Exhaust",
+        "Flash",
+        "Teleport",
+        "Cleanse",
+        "Ignite"
+    ]
 
 
-    module.exports = {Boots, LegendaryItems, MythicItems, Champions, Abilities};
+    module.exports = {Boots, LegendaryItems, MythicItems, Champions, Abilities, SummonerSpells};
