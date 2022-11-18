@@ -27,8 +27,6 @@ module.exports = {
         ]
         const PrimaryRune = PrimaryRunesArray[getRandomRune(5)];
         PrimaryRunesArray.splice(PrimaryRunesArray.indexOf(PrimaryRune), 1)
-        console.log(PrimaryRune)
-        console.log(PrimaryRunesArray);
         const SecondaryRune = PrimaryRune.slots[0].runes[getRandomRune(3)];
         const ThirdRune = PrimaryRune.slots[1].runes[getRandomRune(3)];
         const FourthRune = PrimaryRune.slots[2].runes[getRandomRune(3)];
@@ -59,13 +57,13 @@ module.exports = {
     
         const RandomMythicItem = MythicItems[getRandomRune(26)];
         const RandomBoots = Boots[getRandomRune(7)];
-        const RandomLegendaryItems1 = LegendaryItems[getRandomRune(70)];
+        const RandomLegendaryItems1 = LegendaryItems[getRandomRune(66)];
         MythicItems.splice(MythicItems.indexOf(RandomLegendaryItems1), 1)
-        const RandomLegendaryItems2 = LegendaryItems[getRandomRune(69)];
+        const RandomLegendaryItems2 = LegendaryItems[getRandomRune(65)];
         MythicItems.splice(MythicItems.indexOf(RandomLegendaryItems2), 1)
-        const RandomLegendaryItems3 = LegendaryItems[getRandomRune(68)];
+        const RandomLegendaryItems3 = LegendaryItems[getRandomRune(64)];
         MythicItems.splice(MythicItems.indexOf(RandomLegendaryItems3), 1)
-        const RandomLegendaryItems4 = LegendaryItems[getRandomRune(67)];
+        const RandomLegendaryItems4 = LegendaryItems[getRandomRune(63)];
     
         const RandomItems = RandomBoots + " | " + RandomMythicItem + " | " + RandomLegendaryItems1 + " | " + RandomLegendaryItems2 + " | " + RandomLegendaryItems3 + " | " + RandomLegendaryItems4;
         
