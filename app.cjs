@@ -13,6 +13,7 @@ const fs = require('fs');
 const path = require('path');
 const { channel } = require('diagnostics_channel');
 const { spoiler } = require('@discordjs/builders');
+const { default: queue } = require('./commands/queue.cjs');
 
 
 const client = new Client({
@@ -41,7 +42,6 @@ client.player = new Player(client, {
         quality: "highestaudio",
         highWaterMark: 1 << 25
     },
-    spotifyBridge: false,
 })
 
 client.on("ready", () => {
@@ -78,8 +78,6 @@ client.on("interactionCreate", async interaction => {
 client.login(process.env.DISCORD_BOT_TOKEN);
 
 //Timer
-
-
 
 let PREFIX = '/'
 
@@ -181,6 +179,7 @@ client.on('message', message => {
        
     }
 })
+
 
 //restart bot
 client.on('message', message => {

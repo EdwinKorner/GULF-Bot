@@ -1,5 +1,5 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
-const { channelMention, roleMention, userMention, User } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, inlineCode } = require("@discordjs/builders")
+const { channelMention, roleMention, userMention, User, MessageAttachment} = require('discord.js');
 const runeData = require('../runesReforged.json')
 const {Boots, LegendaryItems, MythicItems, Champions, Abilities, SummonerSpells} = require('../ultimateBraveryData.cjs');
 
@@ -43,13 +43,13 @@ module.exports = {
             SmallThirdRune,
         ]
         
-        const RandomSecondaryRune1 = SecondaryRunesArray[getRandomRune(3)];
+        const RandomSecondaryRune1 = SecondaryRunesArray[getRandomRune(SecondaryRunesArray.length)];
         SecondaryRunesArray.splice(SecondaryRunesArray.indexOf(RandomSecondaryRune1), 1)
-        const RandomSecondaryRune2 = SecondaryRunesArray[getRandomRune(3)];
+        const RandomSecondaryRune2 = SecondaryRunesArray[getRandomRune(SecondaryRunesArray.length)];
 
-        const FullRunePage = SecondaryRune.name + " | " + ThirdRune.name + " | " + FourthRune.name + " | " + FifthRune.name;
-        const FullSecondRunePage = RandomSecondaryRune1.name + " | " + RandomSecondaryRune2.name;
-
+        const FullRunePage = SecondaryRune.icon.toString() + " | " + ThirdRune.icon + " | " + FourthRune.icon + " | " + FifthRune.icon;
+        const FullSecondRunePage = RandomSecondaryRune1.icon + " | " + RandomSecondaryRune2.icon;
+        console.log(FullSecondRunePage)
         const RandomSummonerSpell1 = SummonerSpells[getRandomRune(8)]
         SummonerSpells.splice(SummonerSpells.indexOf(RandomSummonerSpell1), 1)
         const RandomSummonerSpell2 = SummonerSpells[getRandomRune(7)]
@@ -71,51 +71,104 @@ module.exports = {
         const RandomAbility = Abilities[getRandomRune(3)];
 
         const FirstBonusStatArray = [
-            "Adaptive Force",
-            "Attack Speed",
-            "Ability Haste"
+            "commands/perk-images/StatMods/StatModsAdaptiveForceIcon.png",
+            "commands/perk-images/StatMods/StatModsAttackSpeedIcon.png",
+            "commands/perk-images/StatMods/StatModsCDRScalingIcon.png"
         ]
         const FirstBonusStat = FirstBonusStatArray[getRandomRune(3)];
         const SecondBonusStatArray = [
-            "Adaptive Force",
-            "Armor",
-            "Magic Resistance"
+            "commands/perk-images/StatMods/StatModsAdaptiveForceIcon.png",
+            "commands/perk-images/StatMods/StatModsArmorIcon.png",
+            "commands/perk-images/StatMods/StatModsMagicResIcon.MagicResist_Fix.png"
         ]
         const SecondBonusStat = SecondBonusStatArray[getRandomRune(3)];
         const ThirdBonusStatArray = [
-            "Health",
-            "Armor",
-            "Magic Resistance"
+            "commands/perk-images/StatMods/StatModsArmorIcon.png",
+            "commands/perk-images/StatMods/StatModsHealthScalingIcon.png",
+            "commands/perk-images/StatMods/StatModsMagicResIcon.MagicResist_Fix.png"
         ]
         const ThirdBonusStat = ThirdBonusStatArray[getRandomRune(3)];
         const FullBonusStats = FirstBonusStat + " | " + SecondBonusStat + " | " + ThirdBonusStat;
 
+        const ImagesArray = [
+            "commands/"+SecondaryRune.icon,
+            "commands/"+ThirdRune.icon,
+            "commands/"+FourthRune.icon,
+            "commands/"+FifthRune.icon,
+        ]
+
+        const SmallRunesArray = [
+            "commands/"+SmallFirstRune.icon,
+            "commands/"+SmallSecondRune.icon,
+            "commands/"+SmallThirdRune.icon,
+        ]
+        console.log(SecondaryRune.icon)
+        
+        const attachment = new MessageAttachment(
+            ImagesArray[0],
+        )
+        const attachment2 = new MessageAttachment(
+            ImagesArray[1],
+        )
+        const attachment3 = new MessageAttachment(
+            ImagesArray[2],
+        )
+        const attachment4 = new MessageAttachment(
+            ImagesArray[3],
+        )
+        const attachment5 = new MessageAttachment(
+            SmallRunesArray[0]
+        )
+        const attachment6 = new MessageAttachment(
+            SmallRunesArray[1]
+        )
+        const attachment7 = new MessageAttachment(
+            SmallRunesArray[2]
+        )
+        const attachment8 = new MessageAttachment(
+            FirstBonusStat
+        )
+        const attachment9 = new MessageAttachment(
+            SecondBonusStat
+        )
+        const attachment10 = new MessageAttachment(
+            ThirdBonusStat
+        )
+        const attachment11 = new MessageAttachment(
+            RandomMythicItem
+        )
+            console.log(attachment11)
+            console.log(attachment2)
         const requestedUser = interaction.user;
 		await interaction.reply(
-            "Requested by: " + `${requestedUser}` + ('\n') +
-            "**Champion: **"
-            + ('\n') +
-            RandomChamp 
-            + ('\n') +
-            "**Runes: **"
-            + ('\n') +
-            FullRunePage 
-            + ('\n') +
-            FullSecondRunePage 
-            + ('\n') +
-            FullBonusStats
-            + ('\n') +
-            "**Items: **"
-            + ('\n') +
-            RandomItems
-            + ('\n') +
-            "**Summoner Spells: **"
-            + ('\n') +
-            RandomSummonerSpells
-            + ('\n') +
-            "**Ability to max: **"
-            + ('\n') +
-            RandomAbility
+            {files: [attachment, attachment2, attachment3, attachment4, attachment5, attachment6, attachment7, attachment8, attachment9, attachment10, attachment11,]}
+            
+
+
+            // "Requested by: " + `${requestedUser}` + ('\n') +  +
+            // "**Champion: **"
+            // + ('\n') +
+            // RandomChamp 
+            // + ('\n') +
+            // "**Runes: **"
+            // + ('\n') +
+            // FullRunePage 
+            // + ('\n') +
+            // FullSecondRunePage 
+            // + ('\n') +
+            // FullBonusStats
+            // + ('\n') +
+            // "**Items: **"
+            // + ('\n') +
+            // RandomItems
+            // + ('\n') +
+            // "**Summoner Spells: **"
+            // + ('\n') +
+            // RandomSummonerSpells
+            // + ('\n') +
+            // "**Ability to max: **"
+            // + ('\n') +
+            // RandomAbility
             );
             return;
 

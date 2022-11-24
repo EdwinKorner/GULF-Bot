@@ -20,7 +20,10 @@ module.exports = {
 		if (!interaction.member.voice.channel) return interaction.reply("Du måste vara i en vc för att spela musik din schliriga jävel");
 
         // Create queue for the bot
-		const queue = await client.player.createQueue(interaction.guild);
+		const queue = await client.player.createQueue(interaction.guild, {
+            leaveOnStop: false,
+            leaveOnEmpty: true,
+        });
         // Wait until you are connected to the channel
 		if (!queue.connection) await queue.connect(interaction.member.voice.channel)
 
@@ -56,4 +59,5 @@ module.exports = {
             embeds: [embed]
         })
 	},
+    
 }
