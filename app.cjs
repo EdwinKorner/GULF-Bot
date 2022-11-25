@@ -14,6 +14,7 @@ const path = require('path');
 const { channel } = require('diagnostics_channel');
 const { spoiler } = require('@discordjs/builders');
 const { default: queue } = require('./commands/queue.cjs');
+const DiscordUtility = require("utils-discord");
 
 
 const client = new Client({
@@ -35,6 +36,8 @@ for(const file of commandFiles)
     client.commands.set(command.data.name, command);
     commands.push(command.data.toJSON());
 }
+
+client.utils = DiscordUtility;
 
 // Add the player on the client
 client.player = new Player(client, {

@@ -12,6 +12,7 @@
     "dotenv": "^16.0.3",
     "ffmpeg-static": "^5.1.0",
     "opusscript": "^0.0.8",
+    "utils-discord": "^3.0.1",
     "ytdl-core": "^4.11.2"
   },
   "name": "gulf-bot",
