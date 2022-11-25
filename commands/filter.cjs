@@ -45,7 +45,12 @@ module.exports = {
                                     subcommand
                                         .setName("vibrato")
                                         .setDescription("Lägger vibrato på musiken")
-                                    ),
+                                    )
+                                    .addSubcommand(subcommand =>
+                                        subcommand
+                                            .setName("clear")
+                                            .setDescription("Tar bort alla filter från musiken")
+                                        ),
 
 	execute: async ({ client, interaction }) => {
 
@@ -91,10 +96,12 @@ module.exports = {
             await queue.setFilters({
                 vibrato: true
               });
+        }else if(interaction.options.getSubcommand() === "vibrato"){
+            await queue.setFilters({});
         }
 
         await interaction.reply(
-            "röv"
+            "Filtret lades till"
         )
 	},
 }
