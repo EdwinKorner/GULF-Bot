@@ -141,34 +141,34 @@ module.exports = {
             console.log(attachment2)
         const requestedUser = interaction.user;
 		await interaction.reply(
-            {files: [attachment, attachment2, attachment3, attachment4, attachment5, attachment6, attachment7, attachment8, attachment9, attachment10, attachment11,]}
+            // {files: [attachment, attachment2, attachment3, attachment4, attachment5, attachment6, attachment7, attachment8, attachment9, attachment10, attachment11,]}
             
 
 
-            // "Requested by: " + `${requestedUser}` + ('\n') +  +
-            // "**Champion: **"
-            // + ('\n') +
-            // RandomChamp 
-            // + ('\n') +
-            // "**Runes: **"
-            // + ('\n') +
-            // FullRunePage 
-            // + ('\n') +
-            // FullSecondRunePage 
-            // + ('\n') +
-            // FullBonusStats
-            // + ('\n') +
-            // "**Items: **"
-            // + ('\n') +
-            // RandomItems
-            // + ('\n') +
-            // "**Summoner Spells: **"
-            // + ('\n') +
-            // RandomSummonerSpells
-            // + ('\n') +
-            // "**Ability to max: **"
-            // + ('\n') +
-            // RandomAbility
+            "Requested by: " + `${requestedUser}` + ('\n') +  +
+            "**Champion: **"
+            + ('\n') +
+            RandomChamp 
+            + ('\n') +
+            "**Runes: **"
+            + ('\n') +
+            FullRunePage 
+            + ('\n') +
+            FullSecondRunePage 
+            + ('\n') +
+            FullBonusStats
+            + ('\n') +
+            "**Items: **"
+            + ('\n') +
+            RandomItems
+            + ('\n') +
+            "**Summoner Spells: **"
+            + ('\n') +
+            RandomSummonerSpells
+            + ('\n') +
+            "**Ability to max: **"
+            + ('\n') +
+            RandomAbility
             );
             return;
 
