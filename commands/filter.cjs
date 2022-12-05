@@ -96,7 +96,7 @@ module.exports = {
             await queue.setFilters({
                 vibrato: true
               });
-        }else if(interaction.options.getSubcommand() === "vibrato"){
+        }else if(interaction.options.getSubcommand() === "clear"){
             await queue.setFilters({});
         }
 
