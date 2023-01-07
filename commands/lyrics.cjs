@@ -16,6 +16,7 @@ module.exports = {
 				)
 		),
 	execute: async ({ client, interaction }) => {
+        await interaction.deferReply();
         const queue = client.player.getQueue(interaction.guildId)
         let embed = new MessageEmbed()
 
@@ -23,7 +24,7 @@ module.exports = {
             const query = interaction.options.getString("searchterms", false) ?? queue?.current?.title;
 
             if(!query){
-                await interaction.reply("Du glömde skriva namn på låten");
+                await interaction.editReply("Du glömde skriva namn på låten");
                 return;
             }
 
@@ -34,13 +35,13 @@ module.exports = {
             const result = await lyricsClient.search(`${queryFormated}`);
 
             if (!result || !result.lyrics){
-                await interaction.reply("Jag hittade ingen text till denna låten");
+                await interaction.editReply("Jag hittade ingen text till denna låten");
                 return;
             }
             embed.setDescription(`${result.lyrics.slice(0, 4090)}...`).setTitle(`${query}`);
         }
 
-        await interaction.reply({
+        await interaction.editReply({
             embeds: [embed]
         })
 

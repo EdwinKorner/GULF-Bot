@@ -7,6 +7,7 @@ module.exports = {
         .setDescription("Skippa låten som spelas"),
 
 	execute: async ({ client, interaction }) => {
+        await interaction.deferReply();
 
         // Get the queue for the server
 		const queue = client.player.getQueue(interaction.guildId)
@@ -14,7 +15,7 @@ module.exports = {
         // If there is no queue, return
 		if (!queue)
         {
-            await interaction.reply("Tommaste kön jag sett i mitt liv");
+            await interaction.editReply("Tommaste kön jag sett i mitt liv");
             return;
         }
 
@@ -24,7 +25,7 @@ module.exports = {
 		queue.skip()
 
         // Return an embed to the user saying the song has been skipped
-        await interaction.reply({
+        await interaction.editReply({
             embeds: [
                 new MessageEmbed()
                     .setDescription(`${currentSong.title} var tydligen en förjävla dålig låt`)

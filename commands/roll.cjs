@@ -8,6 +8,7 @@ module.exports = {
 					option.setName("number").setDescription("search keywords").setRequired(true)
 				),
 	execute: async ({ client, interaction }) => {
+        await interaction.deferReply();
         
         
 
@@ -21,7 +22,7 @@ module.exports = {
             const result = getRandomNumber(rollnumber);
 		
         
-        await interaction.reply(
+        await interaction.editReply(
             "You rolled: " + result
         )
 	},

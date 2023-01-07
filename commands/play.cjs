@@ -16,8 +16,9 @@ module.exports = {
 				)
 		),
 	execute: async ({ client, interaction }) => {
+        await interaction.deferReply();
         // Check if user is in vc
-		if (!interaction.member.voice.channel) return interaction.reply("Du måste vara i en vc för att spela musik din schliriga jävel");
+		if (!interaction.member.voice.channel) return interaction.editReply("Du måste vara i en vc för att spela musik din schliriga jävel");
 
         // Create queue for the bot
 		const queue = await client.player.createQueue(interaction.guild, {
@@ -55,7 +56,7 @@ module.exports = {
         if (!queue.playing) await queue.play()
         
         // Respond with the embed containing information about the player
-        await interaction.reply({
+        await interaction.editReply({
             embeds: [embed]
         })
 	},

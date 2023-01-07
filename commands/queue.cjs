@@ -3,16 +3,17 @@ const { MessageEmbed } = require("discord.js")
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName("queue")
-        .setDescription("Visar de första 10 låtarna i kön"),
-
+    .setName("queue")
+    .setDescription("Visar de första 10 låtarna i kön"),
+    
     execute: async ({ client, interaction }) => {
+        await interaction.deferReply();
         const queue = client.player.getQueue(interaction.guildId)
 
         // check if there are songs in the queue
         if (!queue || !queue.playing)
         {
-            await interaction.reply("Här vart det tomt");
+            await interaction.editReply("Här vart det tomt");
             return;
         }
 
@@ -24,7 +25,7 @@ module.exports = {
         // Get the current song
         const currentSong = queue.current
 
-        await interaction.reply({
+        await interaction.editReply({
             embeds: [
                 new MessageEmbed()
                     .setDescription(`**Just nu spelas**\n` + 

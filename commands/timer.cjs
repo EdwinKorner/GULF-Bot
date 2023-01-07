@@ -11,7 +11,7 @@ module.exports = {
     .addNumberOption((option) => option.setName('seconds').setDescription('Set amount of seconds').setRequired(true)),
     
 	execute: async ({ client, interaction}) => {
-        
+        await interaction.deferReply();    
         
         
         let minutes = interaction.options.getNumber("minutes")
@@ -24,7 +24,7 @@ module.exports = {
         let duration = time;
         
                 // Respond with the embed containing information about the player
-                await interaction.reply(`
+                await interaction.editReply(`
                 Timer: **${duration}**
                 `)      
     

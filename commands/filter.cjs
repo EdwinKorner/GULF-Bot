@@ -53,12 +53,13 @@ module.exports = {
                                         ),
 
 	execute: async ({ client, interaction }) => {
+        await interaction.deferReply();
 
         const queue = client.player.getQueue(interaction.guildId)
 
 		if (!queue)
 		{
-			await interaction.reply("Det finns inga låtar i kön kompis")
+			await interaction.editReply("Det finns inga låtar i kön kompis")
 			return;
 		}
         if(interaction.options.getSubcommand() === "8d"){
@@ -100,7 +101,7 @@ module.exports = {
             await queue.setFilters({});
         }
 
-        await interaction.reply(
+        await interaction.editReply(
             "Filtret lades till"
         )
 	},

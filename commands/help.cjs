@@ -5,7 +5,8 @@ module.exports = {
         .setName("help")
         .setDescription("Skicka hjälp-hemsidan"),
 	execute: async ({ client, interaction }) => {
+        await interaction.deferReply();
 
-        await interaction.reply(`**Instruktionssida: ** https://gulfbothelp.netlify.app/`)
+        await interaction.editReply(`**Instruktionssida: ** https://gulfbothelp.netlify.app/`)
 	},
 }

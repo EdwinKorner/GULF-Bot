@@ -5,17 +5,18 @@ module.exports = {
         .setName("exit")
         .setDescription("Kicka botten från vc"),
 	execute: async ({ client, interaction }) => {
+		await interaction.deferReply();
 
 		const queue = client.player.getQueue(interaction.guildId)
 
 		if (!queue)
 		{
-			await interaction.reply("Det finns inga låtar i kön kompis")
+			await interaction.editReply("Det finns inga låtar i kön kompis")
 			return;
 		}
 
 		queue.destroy();
 
-        await interaction.reply("Lägger almagd snabbt. Brb")
+        await interaction.editReply("Lägger almagd snabbt. Brb")
 	},
 }
